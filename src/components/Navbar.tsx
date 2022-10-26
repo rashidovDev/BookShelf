@@ -6,9 +6,13 @@ import { navigation } from '../data'
 const Navbar : React.FC = () => {
   return (
      <Stack
-     padding="30px 120px"
+     padding="35px 0"
+     width="80%"
+     margin="auto"
      direction="row"
      justifyContent="space-between"
+     alignItems="center"
+     color="#AC6B34"
      >
         <Stack>
         <Typography variant="h4" gutterBottom>
