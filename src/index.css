@@ -15,3 +15,8 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-button{
+  color: #888;
+  background-color:#fff;
+}
