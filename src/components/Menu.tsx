@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Routes, Route} from "react-router-dom"
-import {Navbar, Home, Books, Login, Register} from "./navigate"
+import {Navbar, Books, Register,AddBookModal,UpdateModal} from "./navigate"
+
 
 const Menu : React.FC = () => {
+
+  const [key, setKey] = useState<string>("")
+  const [secret, setSecret] = useState<string>("")
+
   return (
     <>
     <Navbar/>
+    <AddBookModal/>
+    <UpdateModal/>
     <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/books' element={<Books/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
+        <Route path='/' element={<Books
+        key={key}
+        setKey={setKey}
+        secret={secret}
+        setSecret={setSecret}
+        />}/>
+        <Route path='/register' element={<Register
+        key={key}
+        setKey={setKey}
+        secret={secret}
+        setSecret={setSecret}
+        />}/>
     </Routes>
     </>
   )

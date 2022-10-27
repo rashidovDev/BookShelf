@@ -1,5 +1,5 @@
 body {
-  background-color: #333;
+  background-color: #222;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -18,12 +18,19 @@ code {
 @tailwind utilities;
 
 .form-button{
-  color: #888;
-  background-color:#fff;
+  background-color: #AC6B34;
   margin-right: 20px;
 }
 
 .add-button{
-  color : #fff;
-  background-color:#AC6B34;
+  background-color: #AC6B34;
+}
+
+.update-button{
+  background-color: rgb(13, 186, 13);
+  margin-right: 10px;
+}
+
+.delete-button{
+  background-color: crimson;
 }

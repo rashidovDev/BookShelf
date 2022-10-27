@@ -6,13 +6,13 @@ export interface INav {
 
 export const navigation : INav[] = [
     {
-        href : "/books",
+        href : "/",
         name : "Books"
     },
-    {
-        href : "/login",
-        name : "Login"
-    },
+    // {
+    //     href : "/login",
+    //     name : "Login"
+    // },
     {
         href : "/register",
         name : "Register"
