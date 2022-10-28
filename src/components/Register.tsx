@@ -4,15 +4,16 @@ import Input from './utils/input/Input';
 import Button from './utils/button/Button';
 import { Typography } from '@mui/material'
 import axios from 'axios';
-import { IState } from './typescript';
 import { useNavigate } from 'react-router-dom';
 var md5 = require('md5');
 
 
-const Register : React.FC<IState> = ({key,setKey,secret,setSecret}) => {
+const Register : React.FC = () => {
 
   const navigate = useNavigate()
-
+  
+  const [key, setKey] = useState<string>("")
+  const [secret, setSecret] = useState<string>("")
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   

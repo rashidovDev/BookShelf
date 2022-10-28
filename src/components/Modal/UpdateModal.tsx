@@ -7,8 +7,11 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Input from '../utils/input/Input';
 import Button from '../utils/button/Button';
+import axios from "axios"
+import { IId } from '../typescript';
+var md5 = require('md5')
 
-const UpdateModal = () => {
+const UpdateModal : React.FC<IId> = ({id}) => {
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -22,9 +25,28 @@ const UpdateModal = () => {
         p: 4,
       };
 
+      
+
       const [key, setKey] = useState<string>('')
       const [secret, setSecret] = useState<string>('')
 
+      const updateHandler = async (e : React.FormEvent) => {
+         const updateStatus = {
+            "status":3
+         }
+         const method = "PATCH"
+         const url = `https://23v112.lavina.tech/books/${id}`
+         const body = `${`"status":3`}`
+
+         const sign = md5(`${method}${url}{${body}}AnvarSecret`)
+         await axios.patch(url,updateStatus, {
+          headers : {
+            "Key" : "anvar",
+            "Sign" : sign
+          }
+         })
+      }
+      
       const dispatch = useDispatch()
       const updateBook = useSelector((state : RootState) => state.addBookSlice.updateIsVisible)
     
@@ -48,9 +70,9 @@ const UpdateModal = () => {
     marginY="10px"
     sx={{textAlign:"center", color : "#AC6B34"}}
     >Update Status</Typography>
-    <form>
-    <Input  placeholder="Enter UserKey" value={key} setValue={setKey} type="text"/>
-    <Input  placeholder="Enter UserSecret" value={secret} setValue={setSecret} type="text"/>
+    <form onSubmit={updateHandler}>
+    {/* <Input  placeholder="Please enter UserKey" value={key} setValue={setKey} type="text"/>
+    <Input  placeholder="Please Enter UserSecret" value={secret} setValue={setSecret} type="text"/> */}
     <div>
     <Button buttonName="Update" class="form-button"/>
     </div>

@@ -12,8 +12,6 @@ var md5 = require('md5')
 
 const AddBookModal = () => {
 
-  
-
     const style = {
         position: 'absolute' as 'absolute',
         top: '50%',
@@ -26,16 +24,6 @@ const AddBookModal = () => {
         p: 4,
       };
       const [isbn, setIsbn] = useState<string>('')
-
-      
-      const method = "POST";
-      const url = "https://23v112.lavina.tech/books";
-      const body = `"isbn":"${isbn}"`
-      const key = "AnvarSecret"
-
-      const sign = md5(`${method}${url}{${body}}AnvarSecret`)
-      console.log(sign)
-      console.log(body)
 
       const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault()

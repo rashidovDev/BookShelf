@@ -7,11 +7,11 @@ import Button from './utils/button/Button';
 import {useDispatch} from "react-redux"
 import { addBookAction } from './store/slices/addBookSlice';
 import { Typography } from '@mui/material';
-import { IState, IBook } from './typescript';
+import { IId, IBook } from './typescript';
 import axios from "axios"
 var md5 = require('md5')
 
-const Books : React.FC = () => {
+const Books : React.FC<IId> = ({id, setId}) => {
 
   const [data, setData] = useState<IBook[]>([])
 
@@ -39,13 +39,6 @@ const Books : React.FC = () => {
   useEffect(() => {
     fetchData()
   },[])
-
-  //DELETE
-
-  // await axios.delete(`https://mern-anvar.herokuapp.com/employee/${id}`)
-  // window.location.reload(false);
-
-  const [id, setId] = useState<number | string>("")
 
   const deleteHandler = async (e : React.FormEvent) => {
     e.preventDefault()
@@ -127,6 +120,7 @@ const Books : React.FC = () => {
          <Stack sx={{position:"absolute",right:"15px", bottom : "10px"}} direction="row">
           <div onClick={() => {
             updateModal()
+            setId(item.book.id)
           }}>
           <Button buttonName='Update' class='update-button'/>
           </div>

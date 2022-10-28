@@ -18,3 +18,8 @@ export interface IBook {
     }
     status : number
 }
+
+export interface IId {
+  id : number | string,
+  setId : React.Dispatch<React.SetStateAction<number | string>>
+}
