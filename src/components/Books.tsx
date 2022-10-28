@@ -40,11 +40,6 @@ const Books : React.FC<IId> = () => {
     fetchData()
   },[])
 
-  //DELETE
-
-  // await axios.delete(`https://mern-anvar.herokuapp.com/employee/${id}`)
-  // window.location.reload(false);
-
   const [id, setId] = useState<number | string>("")
 
   const deleteHandler = async (e : React.FormEvent) => {

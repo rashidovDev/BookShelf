@@ -12,13 +12,15 @@ var md5 = require('md5')
 
 const UpdateModal : React.FC<IId> = ({id}) => {
 
-      const status = 3
+  const updateStatus = {
+    "status":"3"
+}
 
       const updateHandler = async (e : React.FormEvent) => {
         e.preventDefault()
          try{
            const updateStatus = {
-               status
+               "status":"3"
            }
            console.log(updateStatus)
            const method = "PATCH"
@@ -54,10 +56,10 @@ const UpdateModal : React.FC<IId> = ({id}) => {
       aria-describedby="modal-modal-description"
     >
       <Box
-    sx={{width:"25%",borderRadius:"10px", margin:"auto",padding:"15px",background:"#333",marginTop:"100px"}}
+    sx={{width:"35%",borderRadius:"10px", margin:"auto",padding:"15px",background:"#333",marginTop:"100px"}}
     >
     <Typography
-    variant='h4'
+    variant='h5'
     marginY="10px"
     sx={{textAlign:"center", color : "#AC6B34"}}
     >Update Status</Typography>
