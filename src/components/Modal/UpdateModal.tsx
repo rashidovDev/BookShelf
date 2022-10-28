@@ -12,25 +12,23 @@ var md5 = require('md5')
 
 const UpdateModal : React.FC<IId> = ({id}) => {
 
-  const updateStatus = {
-    "status":"3"
-}
-
       const updateHandler = async (e : React.FormEvent) => {
         e.preventDefault()
          try{
            const updateStatus = {
-               "status":"3"
+               status:3
            }
            console.log(updateStatus)
            const method = "PATCH"
            const url = `https://23v112.lavina.tech/books/${id}`
            const body = `${`"status":3`}`
+           const key = "anvar"
+           const secret = "AnvarSecret"
   
-           const sign = md5(`${method}${url}{${body}}AnvarSecret`)
+           const sign = md5(`${method}${url}{${body}}${secret}`)
            await axios.patch(url,updateStatus,{
             headers : {
-              "Key" : "anvar",
+              "Key" :  key,
               "Sign" : sign
             }
            })

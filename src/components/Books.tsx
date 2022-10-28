@@ -19,12 +19,14 @@ const Books : React.FC<IId> = () => {
     try{  
        const method = "GET"
        const url = "https://23v112.lavina.tech/books"
+       const key = "anvar"
+       const secret = "AnvarSecret"
        
-       const sign = md5(`${method}${url}AnvarSecret`)
+       const sign = md5(`${method}${url}${secret}`)
 
        const users = await axios.get(url,{
         headers : { 
-          "Key" : 'anvar',
+          "Key" :  key,
           "Sign" : sign
         }
        })
@@ -47,11 +49,12 @@ const Books : React.FC<IId> = () => {
     try{
     const method = "DELETE";
     const url = `https://23v112.lavina.tech/books/${id}`
+    const key = "anvar"
 
     const sign = md5(`${method}${url}AnvarSecret`)
     await axios.delete(url, {
       headers : {
-        "Key" : "anvar",
+        "Key" :  key,
         "Sign" : sign
       }
     })

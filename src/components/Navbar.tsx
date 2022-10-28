@@ -7,7 +7,7 @@ const Navbar : React.FC = () => {
   return (
      <Stack
      padding="35px 0"
-     width="70%"
+     width="80%"
      margin="auto"
      direction="row"
      justifyContent="space-between"
