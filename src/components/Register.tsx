@@ -5,7 +5,9 @@ import Button from './utils/button/Button';
 import { Typography } from '@mui/material'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { IState } from './typescript';
 var md5 = require('md5');
+
 
 
 const Register : React.FC = () => {

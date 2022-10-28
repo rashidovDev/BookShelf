@@ -11,7 +11,7 @@ import { IId, IBook } from './typescript';
 import axios from "axios"
 var md5 = require('md5')
 
-const Books : React.FC<IId> = ({id, setId}) => {
+const Books : React.FC<IId> = () => {
 
   const [data, setData] = useState<IBook[]>([])
 
@@ -39,6 +39,13 @@ const Books : React.FC<IId> = ({id, setId}) => {
   useEffect(() => {
     fetchData()
   },[])
+
+  //DELETE
+
+  // await axios.delete(`https://mern-anvar.herokuapp.com/employee/${id}`)
+  // window.location.reload(false);
+
+  const [id, setId] = useState<number | string>("")
 
   const deleteHandler = async (e : React.FormEvent) => {
     e.preventDefault()
@@ -89,8 +96,8 @@ const Books : React.FC<IId> = ({id, setId}) => {
     <Grid container rowSpacing={1} sx={{marginTop:"20px"}} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
       {data.map((item,idx) => (  
       <Grid key={idx + 1} item md={3} xs={12} sm={6}>
-        <Box sx={{padding : "15px",color : "#fff",background:"#444"
-        ,borderRadius:"10px",height:"450px",position : "relative"  }}>
+        <Box sx={{padding : "15px",color : "#fff",background:"#444", width:"270px"
+        ,borderRadius:"10px",height:"470px",position : "relative", margin:"auto"  }}>
           <CardMedia
           sx={{height:"250px", width:"170px",margin:"auto",marginBottom:"20px",borderRadius:"10px"}}
           component="img"
@@ -120,7 +127,6 @@ const Books : React.FC<IId> = ({id, setId}) => {
          <Stack sx={{position:"absolute",right:"15px", bottom : "10px"}} direction="row">
           <div onClick={() => {
             updateModal()
-            setId(item.book.id)
           }}>
           <Button buttonName='Update' class='update-button'/>
           </div>

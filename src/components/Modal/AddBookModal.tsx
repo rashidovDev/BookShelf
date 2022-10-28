@@ -29,22 +29,24 @@ const AddBookModal = () => {
         e.preventDefault()
         try{
           const newData = {
-            isbn
+              isbn
           }
 
           const method = "POST";
           const url = "https://23v112.lavina.tech/books";
           const body = `"isbn":"${isbn}"`
-          const key = "AnvarSecret"
+          const secret = "AnvarSecret"
+          const key = "anvar"
   
-          const sign = md5(`${method}${url}{${body}}AnvarSecret`)
+          const sign = md5(`${method}${url}{${body}}${secret}`)
           await axios.post(url,newData, {
             headers : {
-                 "Key" : "anvar",
+                 "Key" :  key,
                  "Sign" : sign
             }
           })
           setIsbn("")
+          window.location.reload();
         }
         catch(err){
           console.log(err)
