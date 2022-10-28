@@ -7,6 +7,7 @@ const Menu : React.FC = () => {
 
   const [key, setKey] = useState<string>("")
   const [secret, setSecret] = useState<string>("")
+  const [id, setId] = useState<number | string>("")
 
   return (
     <>
@@ -14,13 +15,8 @@ const Menu : React.FC = () => {
     <AddBookModal/>
     <UpdateModal/>
     <Routes>
-        <Route path='/' element={<Books
-        key={key}
-        setKey={setKey}
-        secret={secret}
-        setSecret={setSecret}
-        />}/>
-        <Route path='/register' element={<Register
+        <Route path='/books' element={<Books />}/>
+        <Route path='/' element={<Register
         key={key}
         setKey={setKey}
         secret={secret}

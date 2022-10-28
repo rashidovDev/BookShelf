@@ -7,8 +7,12 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Input from '../utils/input/Input';
 import Button from '../utils/button/Button';
+import axios from "axios"
+var md5 = require('md5')
 
 const AddBookModal = () => {
+
+  
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -22,6 +26,42 @@ const AddBookModal = () => {
         p: 4,
       };
       const [isbn, setIsbn] = useState<string>('')
+
+      
+      const method = "POST";
+      const url = "https://23v112.lavina.tech/books";
+      const body = `"isbn":"${isbn}"`
+      const key = "AnvarSecret"
+
+      const sign = md5(`${method}${url}{${body}}AnvarSecret`)
+      console.log(sign)
+      console.log(body)
+
+      const handleSubmit = async (e : React.FormEvent) => {
+        e.preventDefault()
+        try{
+          const newData = {
+            isbn
+          }
+
+          const method = "POST";
+          const url = "https://23v112.lavina.tech/books";
+          const body = `"isbn":"${isbn}"`
+          const key = "AnvarSecret"
+  
+          const sign = md5(`${method}${url}{${body}}AnvarSecret`)
+          await axios.post(url,newData, {
+            headers : {
+                 "Key" : "anvar",
+                 "Sign" : sign
+            }
+          })
+          setIsbn("")
+        }
+        catch(err){
+          console.log(err)
+        }
+      }
 
       const dispatch = useDispatch()
       const addbook = useSelector((state : RootState) => state.addBookSlice.addBookIsVisible)
@@ -46,7 +86,7 @@ const AddBookModal = () => {
     marginY="10px"
     sx={{textAlign:"center", color : "#AC6B34"}}
     >Add new book</Typography>
-    <form>
+    <form onSubmit={handleSubmit}>
     <Input  placeholder="Enter ISBN" value={isbn} setValue={setIsbn} type="text"/>
     <Button buttonName="Submit" class="form-button"/>
     </form>

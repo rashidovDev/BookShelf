@@ -5,10 +5,13 @@ import Button from './utils/button/Button';
 import { Typography } from '@mui/material'
 import axios from 'axios';
 import { IState } from './typescript';
+import { useNavigate } from 'react-router-dom';
 var md5 = require('md5');
 
 
 const Register : React.FC<IState> = ({key,setKey,secret,setSecret}) => {
+
+  const navigate = useNavigate()
 
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
@@ -24,6 +27,7 @@ const Register : React.FC<IState> = ({key,setKey,secret,setSecret}) => {
        }
       const url = "https://23v112.lavina.tech/signup";
       await axios.post(url,registerData)
+      navigate("/books")
     }
     catch(err){
       console.log(err)

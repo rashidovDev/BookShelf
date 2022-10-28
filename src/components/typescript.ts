@@ -5,3 +5,16 @@ export interface IState {
     setSecret : React.Dispatch<React.SetStateAction<string>>
     setKey : React.Dispatch<React.SetStateAction<string>>
 }
+
+export interface IBook {
+    book : {
+      author : string,
+      cover : string,
+      id : number,
+      isbn : string,
+      pages : number,
+      published : number,
+      title : string
+    }
+    status : number
+}

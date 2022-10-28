@@ -22,11 +22,8 @@ const UpdateModal = () => {
         p: 4,
       };
 
-      const [author, setAuthor] = useState<string>('')
-      const [title, setTitle] = useState<string>('')
-      const [isbn, setIsbn] = useState<string>('')
-      const [published, setPublished] = useState<string>('')
-      const [pages, setPages] = useState<string>('')
+      const [key, setKey] = useState<string>('')
+      const [secret, setSecret] = useState<string>('')
 
       const dispatch = useDispatch()
       const updateBook = useSelector((state : RootState) => state.addBookSlice.updateIsVisible)
@@ -50,14 +47,13 @@ const UpdateModal = () => {
     variant='h4'
     marginY="10px"
     sx={{textAlign:"center", color : "#AC6B34"}}
-    >Update book</Typography>
+    >Update Status</Typography>
     <form>
-    <Input  placeholder="Enter ISBN" value={isbn} setValue={setIsbn} type="text"/>
-    <Input  placeholder="Enter title" value={title} setValue={setTitle} type="text"/>
-    <Input  placeholder="Enter author" value={author} setValue={setAuthor} type="text"/>
-    <Input  placeholder="Enter published" value={published} setValue={setPublished} type="text"/>
-    <Input  placeholder="Enter pages" value={pages} setValue={setPages} type="text"/>
-    <Button buttonName="Submit" class="form-button"/>
+    <Input  placeholder="Enter UserKey" value={key} setValue={setKey} type="text"/>
+    <Input  placeholder="Enter UserSecret" value={secret} setValue={setSecret} type="text"/>
+    <div>
+    <Button buttonName="Update" class="form-button"/>
+    </div>
     </form>
     </Box>
     </Modal>

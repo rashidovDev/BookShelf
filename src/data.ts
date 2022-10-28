@@ -6,7 +6,7 @@ export interface INav {
 
 export const navigation : INav[] = [
     {
-        href : "/",
+        href : "/books",
         name : "Books"
     },
     // {
@@ -14,7 +14,7 @@ export const navigation : INav[] = [
     //     name : "Login"
     // },
     {
-        href : "/register",
+        href : "/",
         name : "Register"
     }
 ]
