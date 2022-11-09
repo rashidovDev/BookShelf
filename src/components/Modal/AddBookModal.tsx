@@ -25,12 +25,18 @@ const AddBookModal = () => {
       };
       const [isbn, setIsbn] = useState<string>('')
 
+      const newData = {
+        isbn
+    }
+    console.log(newData)
+
       const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault()
         try{
           const newData = {
               isbn
           }
+          console.log(newData)
 
           const method = "POST";
           const url = "https://23v112.lavina.tech/books";
@@ -44,6 +50,7 @@ const AddBookModal = () => {
                  "Key" :  key,
                  "Sign" : sign
             }
+            
           })
           setIsbn("")
           window.location.reload();

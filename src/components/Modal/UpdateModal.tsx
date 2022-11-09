@@ -11,12 +11,12 @@ import { IId } from '../typescript';
 var md5 = require('md5')
 
 const UpdateModal : React.FC<IId> = ({id}) => {
-
       const updateHandler = async (e : React.FormEvent) => {
         e.preventDefault()
          try{
+          const status = 3
            const updateStatus = {
-               status:3
+               status
            }
            console.log(updateStatus)
            const method = "PATCH"
@@ -26,18 +26,18 @@ const UpdateModal : React.FC<IId> = ({id}) => {
            const secret = "AnvarSecret"
   
            const sign = md5(`${method}${url}{${body}}${secret}`)
-           await axios.patch(url,updateStatus,{
+           await axios.patch(url,{
             headers : {
               "Key" :  key,
               "Sign" : sign
-            }
+            },
+            body : JSON.stringify(updateStatus)
            })
-           
-         }catch(err){
-          console.error(err)
+
+           }catch(err){
+           console.error(err)
          }
-      }
-      
+      } 
       const dispatch = useDispatch()
       const updateBook = useSelector((state : RootState) => state.addBookSlice.updateIsVisible)
     
@@ -45,7 +45,7 @@ const UpdateModal : React.FC<IId> = ({id}) => {
       dispatch(addBookAction.toggle2())
       }
 
-  return (
+return (
     <div>
     <Modal
       open={updateBook}
